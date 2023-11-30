@@ -29,5 +29,5 @@ class AlcoholProduct(Product):
     pass  # код писать тут
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pass  # код писать тут
