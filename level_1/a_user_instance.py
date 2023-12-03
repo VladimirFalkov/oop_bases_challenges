@@ -12,7 +12,12 @@ class User:
         self.age = age
         self.phone = phone
 
+    def __str__(self):
+        return f"Информация о пользователе: {self.name}, {self.username}, {self.age}, {self.phone}"
 
-if __name__ == '__main__':
-    pass  # код писать тут
 
+if __name__ == "__main__":
+    user1 = User("Зинаида", "zinatut", 23, "+12023456789")
+
+
+print(user1)
