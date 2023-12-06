@@ -21,17 +21,29 @@ class FileHandler:
         self.filename = filename
 
     def read(self):
-        with open(self.filename, 'r') as file:
+        with open(self.filename, "r") as file:
             return file.read()
 
 
 class JSONHandler(FileHandler):
-    pass  # код писать тут
+    def read(self):
+        with open(self.filename, "r") as file:
+            return json.load(file)
 
 
 class CSVHandler(FileHandler):
-    pass  # код писать тут
+    def read(self):
+        with open(self.filename, "r") as file:
+            reader = list(csv.DictReader(self.filename))
+            return reader
 
 
-if __name__ == '__main__':
-    pass  # код писать тут
+if __name__ == "__main__":
+    task_1 = FileHandler("oop_bases_challenges/level_4/data/text.txt")
+    print(task_1.read())
+    task_2 = JSONHandler("oop_bases_challenges/level_4/data/recipes.json")
+    print(task_2.read())
+    print(type(task_2.read()))
+    task_3 = CSVHandler("oop_bases_challenges/level_4/data/recipes.json")
+    print(task_3.read())
+    print(type(task_3.read()))
