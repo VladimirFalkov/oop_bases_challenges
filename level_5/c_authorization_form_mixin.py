@@ -18,14 +18,12 @@ class Form:
         self.password = password
 
     def valid_form(self):
-        print("this is me")
         return len(self.password) > 8
 
 
 class AuthorizationFormMixin:
     def valid_form(self):
         if super(Form, self).valid_form():
-            print("no non now it is me")
             return self.username in USERNAMES_IN_DB
 
 
