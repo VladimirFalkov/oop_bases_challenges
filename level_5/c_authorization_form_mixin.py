@@ -9,7 +9,7 @@
     3. Создайте экземпляр класса AuthorizationForm и вызовите у него метод valid_form. Должны отрабатывать обе проверки:
        и на длину пароля и на наличия юзернэйма в базе
 """
-USERNAMES_IN_DB = ['Alice_2023', 'BobTheBuilder', 'CrazyCoder', 'DataDiva', 'EpicGamer', 'JavaJunkie']
+USERNAMES_IN_DB = ["Alice_2023", "BobTheBuilder", "CrazyCoder", "DataDiva", "EpicGamer", "JavaJunkie"]
 
 
 class Form:
@@ -23,11 +23,17 @@ class Form:
 
 class AuthorizationFormMixin:
     def valid_form(self):
-        pass  # писать код тут
+        if super(Form, self).valid_form():
+            return self.username in USERNAMES_IN_DB
+
+
+class AuthorizationForm(Form, AuthorizationFormMixin):
+    pass
 
 
 # писать код тут
+form1 = AuthorizationForm("boom", "1234567890-")
+print(form1.valid_form())
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     pass  # писать код тут
