@@ -16,7 +16,7 @@ class Employee:
         self.salary = salary
 
     def get_info(self):
-        return f'{self.name} with salary {self.salary}'
+        return f"{self.name} with salary {self.salary}"
 
 
 class ItDepartmentEmployee(Employee):
@@ -35,9 +35,21 @@ class SuperAdminMixin(AdminMixin):
         employee.salary -= amount
 
 
-# код писать тут
+class Developer(ItDepartmentEmployee, SuperAdminMixin):
+    def __init__(
+        self, name: str, surname: str, age: int, salary: float, language: str
+    ):
+        super().__init__(name, surname, age, salary)
+        self.language = language
+
+    def get_info(self):
+        return super().get_info() + f" and {self.language}"
 
 
-if __name__ == '__main__':
-    pass  # код писать тут
-
+if __name__ == "__main__":
+    developer1 = Developer("John", "Doe", 30, 5000, "Python")
+    print(developer1.get_info())
+    developer1.increase_salary(developer1, 300)
+    print(developer1.get_info())
+    developer1.decrease_salary(developer1, 100)
+    print(developer1.get_info())
