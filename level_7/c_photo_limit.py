@@ -22,8 +22,8 @@ class PhotoForm:
 
 
 def generate_photos_limit_message():
-    return  # код писать тут
+    return f"Вы можете загрузить не более {PhotoForm.max_photos_number} фотографий"
 
 
-if __name__ == '__main__':
-    pass  # код писать тут
+if __name__ == "__main__":
+    print(generate_photos_limit_message())
